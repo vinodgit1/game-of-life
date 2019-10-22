@@ -8,7 +8,7 @@ stages {
      
  stage('Preparation') { 
      steps {
-// for display purposes
+// for display purpose
 
       // Get some code from a GitHub repository
 
