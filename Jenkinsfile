@@ -61,7 +61,8 @@ stages {
  }
     stage('Deploy War') {
       steps {
-        sh label: '', script: 'ansible-playbook deploy.yml'
+          sh 'deploy war'
+        //sh label: '', script: 'ansible-playbook deploy.yml'
       }
  }
 }
@@ -70,7 +71,7 @@ post {
             archiveArtifacts 'gameoflife-web/target/*.war'
         }
         failure {
-            mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+            mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
 }
