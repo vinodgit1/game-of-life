@@ -61,7 +61,7 @@ stages {
  }
     stage('Deploy War') {
       steps {
-          sh 'deploy war'
+          sh label: '', script: 'hello'
         //sh label: '', script: 'ansible-playbook deploy.yml'
       }
  }
