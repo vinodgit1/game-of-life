@@ -8,7 +8,7 @@
       state: stopped
   - name: Clean the existing war file
     file:
-      path: /root/apache-tomcat-8.5.50/webapps/gameoflife.war
+      path: /var/lib/tomcat/webapps/gameoflife.war
       state: absent    
   - name: Deploy War File
     get_url:
