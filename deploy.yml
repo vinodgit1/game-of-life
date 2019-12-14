@@ -4,7 +4,7 @@
   tasks:
   - name: Stop Tomcat
     service:
-      name: tomcat8
+      name: tomcat
       state: stopped
   - name: Clean the existing war file
     file:
@@ -16,5 +16,5 @@
        dest: /root/apache-tomcat-8.5.50/webapps/gameoflife.war
   - name: Start Tomcat
     service:
-      name: tomcat8
+      name: tomcat
       state: started  
