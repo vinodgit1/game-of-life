@@ -49,7 +49,7 @@ stages {
  }
     stage('Deploy War') {
       steps {
-          deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://13.234.238.189:8080/')], contextPath: 'gameoflife', war: '**/*.war '
+          deploy adapters: [tomcat8(credentialsId: 'tomcat-cred', path: '', url: 'http://13.234.59.195:8080/')], contextPath: null, war: '**/*.war'
         //sh label: '', script: 'ansible-playbook deploy.yml'
       }
  }
