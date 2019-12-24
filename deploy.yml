@@ -12,7 +12,7 @@
       state: absent    
   - name: Deploy War File
     get_url:
-       url: http://35.154.221.163:8081/nexus/service/local/artifact/maven/redirect?r=releases&g=com.wakaleo.gameoflife&a=gameoflife1&p=war&v=LATEST
+       url: http://13.232.13.0:8081/nexus/service/local/artifact/maven/redirect?r=releases&g=com.wakaleo.gameoflife&a=gameoflife&p=war&v=LATEST
        dest: /var/lib/tomcat/webapps/gameoflife.war
   - name: Start Tomcat
     service:
