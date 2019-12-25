@@ -65,12 +65,12 @@ stages {
       }
  }
 }
-post {
-        success {
-            archiveArtifacts 'gameoflife-web/target/*.war'
-        }
-        failure {
-            mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
-        }
-    }       
+//post {
+    //    success {
+      //      archiveArtifacts 'gameoflife-web/target/*.war'
+        //}
+       // failure {
+         //   mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+        //}
+    //}       
 }
