@@ -58,11 +58,11 @@ stages {
       steps {
        nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife1', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      }
  }
-    stage('Deploy War') {
-      steps {
-        sh label: '', script: 'ansible-playbook deploy.yml'
-      }
- }
+    //stage('Deploy War') {
+      //steps {
+        //sh label: '', script: 'ansible-playbook deploy.yml'
+      //}
+ //}
 }
 //post {
     //    success {
