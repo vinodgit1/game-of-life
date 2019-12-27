@@ -56,8 +56,7 @@ stages {
 //}
      stage('Artifact upload') {
       steps {
-     nexusPublisher nexusArtifactUploader credentialsId: '117a3dc3-3cf4-4dee-ad9a-b6a7cb6e326a', groupId: 'pipeline', nexusUrl: 'http://13.126.154.182:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'pipline', version: 'nexus2'
-      }
+       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife1', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      }
  }
     stage('Deploy War') {
       steps {
