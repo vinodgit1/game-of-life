@@ -56,7 +56,7 @@ stages {
 //}
      stage('Artifact upload') {
       steps {
-     nexusPublisher nexusArtifactUploader credentialsId: '117a3dc3-3cf4-4dee-ad9a-b6a7cb6e326a', groupId: 'pipeline', nexusUrl: '13.127.132.99:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'pipline', version: 'nexus2'
+     nexusPublisher nexusArtifactUploader credentialsId: '117a3dc3-3cf4-4dee-ad9a-b6a7cb6e326a', groupId: 'pipeline', nexusUrl: 'http://13.126.154.182:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'pipline', version: 'nexus2'
       }
  }
     stage('Deploy War') {
