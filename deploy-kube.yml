@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: sample-deploy
+spec:
+    replicas: 1
+    template:
+      metadata:
+       labels:
+         app: sample-ctr
+      spec:
+         containers:
+         - name: sample-pod
+           image: devopstrainer/ubuntu:sample
+           ports:
+           - containerPort: 8080
