@@ -66,13 +66,13 @@ stages {
                                  docker push docker.io/raknas000/gameoflife-image:$BUILD_NUMBER'''
       }
  }
-  stage('Deploy to Kubernetes') {
-      steps {
-        sh label: '', script: '''kubectl apply -f deploy-kube.yml
-                                 kubectl apply -f service.yml
-                                 '''
-      }
- }
+  stage('Apply Kubernetes files') {
+            steps {
+         withKubeConfig([credentialsId: 'kubeconfig']) {
+         sh 'kubectl apply -f ${repopath}/Authorization-Deploy.yml'
+            } 
+        }
+     }
 }
 post {
         success {
