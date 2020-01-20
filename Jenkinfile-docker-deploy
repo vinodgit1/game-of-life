@@ -66,6 +66,12 @@ stages {
                                  docker push docker.io/raknas000/gameoflife-image:$BUILD_NUMBER'''
       }
  }
+  stage('Update Image Version') {
+      steps {
+        sh label: '', script: '''sed s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
+
+      }
+ }
   stage('Apply Kubernetes files') {
             steps {
              sh label: '', script: '''scp *.yml jenkins@13.234.20.156:/home/jenkins
