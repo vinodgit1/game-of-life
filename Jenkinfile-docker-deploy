@@ -69,7 +69,7 @@ stages {
   stage('Apply Kubernetes files') {
             steps {
          withKubeConfig([credentialsId: 'kubeconfig']) {
-         sh 'kubectl apply -f ${repopath}/Authorization-Deploy.yml'
+         sh 'kubectl apply -f deploy-kube.yml'
             } 
         }
      }
