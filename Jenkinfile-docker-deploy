@@ -68,10 +68,9 @@ stages {
  }
   stage('Apply Kubernetes files') {
             steps {
-         
-         sh 'kubectl apply -f deploy-kube.yml'
-         sh 'kubectl apply -f service.yml'
-          
+         sh label: '', script: '''kubectl apply -f kube-deploy.yml
+                                  kubectl apply -f service.yml'''
+           
         }
      }
 }
