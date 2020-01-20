@@ -68,7 +68,7 @@ stages {
  }
   stage('Update Image Version') {
       steps {
-        sh label: '', script: '''sed s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
+        sh label: '', script: '''sed -i s/latest/$BUILD_NUMBER/ deploy-kube.yml'''
 
       }
  }
