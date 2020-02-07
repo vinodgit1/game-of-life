@@ -42,9 +42,12 @@ stages {
       }
  }
   stage('Sonarqube') {
-  
+    environment {
+        scannerHome = tool 'sonarqube1'
+    }
     steps {
-        withSonarQubeEnv('') {
+        withSonarQubeEnv('sonarqube1') {
+            sh "${scannerHome}/bin/sonar-scanner"
             
         }
         timeout(time: 10, unit: 'MINUTES') {
