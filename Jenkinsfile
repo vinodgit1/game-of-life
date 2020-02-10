@@ -35,28 +35,28 @@ stages {
 //}
    }
  
- // stage('Unit Test Results') {
-   //   steps {
-     // junit '**/target/surefire-reports/TEST-*.xml'
+  stage('Unit Test Results') {
+      steps {
+      junit '**/target/surefire-reports/TEST-*.xml'
       
-      //}
- //}
-// stage('Sonarqube') {
-  //  environment {
-    //    scannerHome = tool 'sonarqube'
-   // }
-    //steps {
-      //  withSonarQubeEnv('sonarqube') {
-        //    sh "${scannerHome}/bin/sonar-scanner"
-        //}
-        //timeout(time: 10, unit: 'MINUTES') {
-          //  waitForQualityGate abortPipeline: true
-       // }
-   // }
-//}
+     }
+ }
+ stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonarqube'
+    }
+    steps {
+      withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+    }
+}
      stage('Artifact upload') {
       steps {
-       nexusPublisher nexusInstanceId: '123456', nexusRepositoryId: 'pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
+       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
       }
      }
     //stage('Deploy War') {
@@ -65,12 +65,12 @@ stages {
       //}
  //}
 }
-//post {
-    //    success {
-      //      archiveArtifacts 'gameoflife-web/target/*.war'
-        //}
-       // failure {
-         //   mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
-        //}
-    //}       
+post {
+       success {
+            archiveArtifacts 'gameoflife-web/target/*.war'
+        }
+       failure {
+           mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+        }
+    }       
 }
